@@ -1,0 +1,7 @@
+### Send a message to the chat assistant
+POST http://localhost:8080/api/chat
+Content-Type: application/json
+
+{
+  "message": "Explain what an AI agent is in simple terms."
+}
