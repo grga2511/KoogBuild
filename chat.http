@@ -1,7 +1,16 @@
-### Send a message to the chat assistant
+### Bez sessionId — server generira UUID
 POST http://localhost:8080/api/chat
 Content-Type: application/json
 
 {
   "message": "Explain what an AI agent is in simple terms."
+}
+
+### S vlastitim sessionId
+POST http://localhost:8080/api/chat
+Content-Type: application/json
+
+{
+  "message": "Give me an example of an AI agent.",
+  "sessionId": "test-session-1"
 }

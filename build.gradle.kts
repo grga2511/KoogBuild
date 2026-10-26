@@ -16,6 +16,7 @@ dependencies {
     implementation("io.ktor:ktor-server-netty:3.3.3")
     implementation("io.ktor:ktor-server-content-negotiation:3.3.3")
     implementation("io.ktor:ktor-serialization-kotlinx-json:3.3.3")
+    implementation("io.ktor:ktor-server-status-pages:3.3.3")
     // Beta
     implementation("ai.koog:koog-agents-additions:1.3.0-beta")
 }
