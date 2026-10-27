@@ -1,16 +1,17 @@
-### Bez sessionId — server generira UUID
+### Prvo pitanje
 POST http://localhost:8080/api/chat
 Content-Type: application/json
 
 {
-  "message": "Explain what an AI agent is in simple terms."
+  "message": "Explain AI in simple terms.",
+  "sessionId": "provjera-memorije-2"
 }
 
-### S vlastitim sessionId
+### Testiranje rada memorije
 POST http://localhost:8080/api/chat
 Content-Type: application/json
 
 {
-  "message": "Give me an example of an AI agent.",
-  "sessionId": "test-session-1"
+  "message": "What was my question?",
+  "sessionId": "provjera-memorije-2"
 }

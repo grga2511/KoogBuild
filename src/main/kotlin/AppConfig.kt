@@ -27,4 +27,13 @@ class AppConfig {
 
     val proxyUrl: String? =
         if (proxyEnabled) required("proxy.url") else null
+
+
+    val memoryWindowSize = required("chat.memory.window-size")
+        .toInt()
+        .also {
+            require(it > 0) {
+                "chat.memory.window-size mora biti veci od 0."
+            }
+        }
 }

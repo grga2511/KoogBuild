@@ -25,10 +25,11 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 import java.util.UUID
+import ai.koog.agents.chatMemory.feature.ChatMemory
+import ai.koog.agents.chatMemory.feature.InMemoryChatHistoryProvider
 
 fun main() {
     val config = AppConfig()
-
     require(config.provider == "google") {
         "Google provider support only."
     }
@@ -53,7 +54,7 @@ fun main() {
             }
         }
     }
-
+    val historyProvider = InMemoryChatHistoryProvider()
     try {
         val agent = AIAgent(
             promptExecutor = MultiLLMPromptExecutor(
@@ -65,7 +66,13 @@ fun main() {
                 )
             ),
             llmModel = model
-        )
+        ) {
+            install(ChatMemory) {
+                chatHistoryProvider = historyProvider
+                windowSize(config.memoryWindowSize)
+            }
+        }
+
 
         val agentMutex = Mutex()
 
@@ -122,7 +129,11 @@ fun main() {
 
                         val response = try {
                             agentMutex.withLock {
-                                agent.run(message, sessionId)
+
+                                val answer = agent.run(message, sessionId)
+
+                                answer
+
                             }
                         } catch (e: CancellationException) {
                             throw e
