@@ -24,6 +24,8 @@ class AppConfig {
     val provider = required("llm.provider")
     val modelName = required("llm.model")
     val proxyEnabled = required("proxy.enabled").toBooleanStrict()
+    val langfuseEnabled = required("langfuse.enabled").toBooleanStrict()
+    val systemPrompt = required("agent.system-prompt")
 
     val proxyUrl: String? =
         if (proxyEnabled) required("proxy.url") else null
