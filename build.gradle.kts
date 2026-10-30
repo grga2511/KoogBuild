@@ -19,6 +19,10 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json:3.3.3")
     implementation("io.ktor:ktor-server-status-pages:3.3.3")
     implementation("ai.koog:agents-features-opentelemetry:1.3.0")
+    testImplementation("io.kotest:kotest-runner-junit5:6.0.3")
+    testImplementation("io.kotest:kotest-assertions-core:6.0.3")
+    testImplementation("io.ktor:ktor-server-test-host:3.3.3")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     // Beta
     implementation("ai.koog:koog-agents-additions:1.3.0-beta")
 }
